@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace XamarinLocalStorage
 {
@@ -12,6 +11,9 @@ namespace XamarinLocalStorage
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = ViewModel;
         }
+
+        private MainViewModel ViewModel { get; } = new MainViewModel();
     }
 }

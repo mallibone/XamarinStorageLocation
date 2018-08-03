@@ -4,11 +4,23 @@
              xmlns:local="clr-namespace:XamarinLocalStorage"
              x:Class="XamarinLocalStorage.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Editor Text="{Binding Text}" />
+        <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="8" Padding="8,0" HorizontalOptions="Center">
+            <Button Text="Load" Command="{Binding LoadCommand}" />
+            <Button Text="Save" Command="{Binding SaveCommand}" />
+        </StackLayout>
+    </Grid>
+    <!--<ListView ItemsSource="{Binding}" ItemSelected="ListView_OnItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Name}" Detail="{Binding Path}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>-->
 </ContentPage>
+
