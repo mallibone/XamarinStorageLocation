@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -15,5 +16,10 @@ namespace XamarinLocalStorage
         }
 
         private MainViewModel ViewModel { get; } = new MainViewModel();
+
+        private void NavigateToDirectoryListing(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ListDirectoriesPage());
+        }
     }
 }

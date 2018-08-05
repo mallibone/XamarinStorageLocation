@@ -2,14 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamarinLocalStorage"
-             x:Class="XamarinLocalStorage.MainPage">
+             x:Class="XamarinLocalStorage.MainPage"
+             Title="Local Storage">
     <Grid Margin ="0,8">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Editor Text="{Binding Text}" />
-        <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="8" Padding="8,0" HorizontalOptions="Center">
+        <Button Text=" List all Environment directories " Clicked="NavigateToDirectoryListing" HorizontalOptions="Center" />
+        <Editor Grid.Row="1" Text="{Binding Text}" />
+        <StackLayout Grid.Row="2" Orientation="Horizontal" Margin="8" Padding="8,0" HorizontalOptions="Center">
             <Button Text="Load" Command="{Binding LoadCommand}" />
             <Button Text="Save" Command="{Binding SaveCommand}" />
         </StackLayout>

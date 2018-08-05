@@ -20,7 +20,7 @@ namespace XamarinLocalStorage
             switch(Device.RuntimePlatform)
             {
                 case Device.iOS:
-                    _directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "..", "Library");
+                    _directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library");
                     break;
                 case Device.UWP:
                     // UWP: roaming storage
