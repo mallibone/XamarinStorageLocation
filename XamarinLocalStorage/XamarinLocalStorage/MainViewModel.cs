@@ -9,7 +9,7 @@ namespace XamarinLocalStorage
     public class MainViewModel : ReactiveObject
     {
         private string _text;
-        private readonly string _directoryPath;
+        private readonly string _rootDirectory;
         private const string StorageFile = "storageFile.txt";
 
         public MainViewModel()
@@ -20,17 +20,18 @@ namespace XamarinLocalStorage
             switch(Device.RuntimePlatform)
             {
                 case Device.iOS:
-                    _directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library");
+                    _rootDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    _rootDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library");
                     break;
                 case Device.UWP:
                     // UWP: roaming storage
-                    // _directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "..", "RoamingState");
+                    // _rootDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "..", "RoamingState");
                     // UWP: local storage
-                    _directoryPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                    _rootDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                     break;
                 default:
                     // Android
-                    _directoryPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    _rootDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                     break;
             }
 
@@ -49,14 +50,14 @@ namespace XamarinLocalStorage
 
         private void LoadText()
         {
-            var filePath = Path.Combine(_directoryPath, StorageFile);
+            var filePath = Path.Combine(_rootDirectory, StorageFile);
             if (!File.Exists(filePath)) return;
             Text = File.ReadAllText(filePath);
         }
 
         private void SaveText()
         {
-            var filePath = Path.Combine(_directoryPath, StorageFile);
+            var filePath = Path.Combine(_rootDirectory, StorageFile);
             File.WriteAllText(filePath, Text);
         }
     }
